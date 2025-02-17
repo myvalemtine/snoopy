@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mapa Interativo - Adicionar Pontos</title>
+    <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+    <link rel="stylesheet" href="css/style.css"/>
+    <style>
+        #map {
+            height: 500px;
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-5">
+        <h2>Mapa Interativo - Adicione um Ponto</h2>
+        <div id="map"></div>
+    </div>
+
+    <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+    <script>
+        // Criar o mapa
+        var map = L.map('map').setView([51.505, -0.09], 2);
+
+        // Adicionar camada do OpenStreetMap
+        L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        }).addTo(map);
+
+        // Função para adicionar um ponto
+        function addMarker(lat, lng) {
+            var title = prompt('Digite o título do local:');
+            var description = prompt('Digite a descrição do local:');
+            var marker = L.marker([lat, lng]).addTo(map);
+            marker.bindPopup(`<h5>${title}</h5><p>${description}</p>`);
+
+            // Salvar marcador no localStorage
+            var markers = JSON.parse(localStorage.getItem('markers')) || [];
+            markers.push({ lat, lng, title, description });
+            localStorage.setItem('markers', JSON.stringify(markers));
+        }
+
+        // Adicionar marcador quando o usuário clicar no mapa
+        map.on('click', function(e) {
+            addMarker(e.latlng.lat, e.latlng.lng);
+        });
+
+        // Carregar os marcadores salvos do localStorage
+        var savedMarkers = JSON.parse(localStorage.getItem('markers')) || [];
+        savedMarkers.forEach(function(marker) {
+            var m = L.marker([marker.lat, marker.lng]).addTo(map);
+            m.bindPopup(`<h5>${marker.title}</h5><p>${marker.description}</p>`);
+        });
+    </script>
+</body>
+</html>

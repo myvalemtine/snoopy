@@ -1,0 +1,313 @@
+
+body{
+    background-color: rgb(238, 74, 102);
+
+}
+
+
+section{
+    margin: 10%;
+    margin-bottom: 5%;
+}
+
+.progress-bar1 {
+  background-color:  rgb(255, 76, 106) !important;
+}
+
+.progress-bar2 {
+  background-color: rgb(212, 34, 43) !important;
+}
+
+.progress {
+  box-shadow: black !important;
+
+}
+
+
+
+
+.tempo{
+    width: 100%; /* Faz a section ocupar toda a largura da tela */
+    background-color: rgb(185, 29, 55);;
+    /* background-color: rgb(255, 152, 170); Cor de fundo para destacar a section */
+    padding: 10%;
+}
+
+.full-width-section {
+  width: 100%; /* Faz a section ocupar toda a largura da tela */
+  background-color: rgb(185, 29, 55); /* Cor de fundo para destacar a section */
+  padding: 10%;
+}
+ 
+h1,p{
+    color:white
+}
+.card-text{
+    color: black;
+}
+h1{
+    margin-bottom: 5%;
+}
+
+.grid-img{
+    width: 100%;
+
+}
+
+.progresso {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Sombra sólida ao redor das barras */
+  }
+  
+  .progresso p {
+    font-size: 1.1rem;
+    margin-top: 1rem;
+  }
+  
+  .progresso .progress-bar {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Sombra sólida em cada barra individualmente */
+  }
+  
+
+.barbar{
+    margin: 2%;
+}
+
+
+
+.card{
+    width: 100%;
+    margin: 2%;
+}
+
+
+
+@media (max-width: 991px) {
+    .navbar {
+        background: rgba(65, 58, 58, 0.3);
+    }
+}
+
+
+footer{
+    padding: 2%;
+}
+
+.banner{
+    opacity: 0.7; /* Deixa a imagem com 50% de opacidade */
+}
+
+img{
+    width: 100%;
+}
+
+.clock-container {
+    text-align: center;
+    color: white;
+    padding: 30px;
+    border-radius: 10px;
+}
+
+.time-display {
+    font-size: 28px;
+}
+
+
+
+.timeline-with-icons {
+    border-left: 2px solid hsl(0, 0%, 80%);
+    position: relative;
+    list-style: none;
+    padding-left: 30px;
+  }
+  
+  .timeline-with-icons .timeline-item {
+    position: relative;
+    padding-left: 20px;
+    margin-bottom: 40px;
+  }
+  
+  .timeline-with-icons .timeline-item:last-child {
+    margin-bottom: 0;
+  }
+  
+  .timeline-with-icons .timeline-icon {
+    position: absolute;
+    left: -55px;
+    background-color: rgb(252, 40, 75);
+    color:  white;
+    border-radius: 50%;
+    height: 50px;
+    width: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.4rem;
+    transition: transform 0.3s ease, background-color 0.3s ease;
+  }
+  
+  .timeline-with-icons .timeline-icon:hover {
+    transform: scale(1.2);
+    background-color:rgb(231, 24, 59);
+    color: white;
+  }
+
+  .timeline-with-icons .timeline-item h5 {
+    color:rgb(255, 255, 255); /* Cor dos títulos */
+  }
+  
+  .text-muted{
+    color:rgb(255, 212, 219);
+  }
+  
+
+  
+  /* Responsividade */
+  @media (max-width: 768px) {
+    .timeline-with-icons {
+      border-left: none;
+      padding-left: 0;
+    }
+  
+    .timeline-with-icons .timeline-item {
+      padding-left: 0;
+      text-align: center;
+    }
+  
+    .timeline-with-icons .timeline-icon {
+      position: static;
+      margin: 0 auto 15px;
+    }
+  }
+
+
+audio {
+    display: none;
+}
+
+#playButton {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background-color: rgb(253, 30, 68,0.9);
+  color: white;
+  border: none;
+  width: 60px;
+  height: 60px;
+  font-size: 24px;
+  cursor: pointer;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.2);
+  z-index: 9999; /* Mantém acima de tudo */
+}
+
+#playButton:hover {
+  background-color: rgb(231, 24, 59,1);
+}
+
+.snoopybtn {
+  background-color:rgb(253, 30, 68,0.9);
+  color: white;
+  border-radius: 30px;
+  padding: 10px 20px;
+  text-decoration: none;
+  font-size: 1.2rem;
+  transition: background-color 0.3s ease;
+}
+
+.snoopybtn:hover {
+  background-color:rgb(231, 24, 59,1);
+  color: white;
+}
+
+.mt-3-9 {
+  margin-top: 10px;
+}
+
+.perfilpessoa{
+  width: 70%;
+}
+
+/* Estilo para os Post-its */
+
+span{
+  font-size:15px;
+}
+a{
+text-decoration:none; 
+color: rgba(255, 38, 78, 0.8);
+}
+.box{
+  padding:60px 0px;
+}
+
+.box-part{
+  background:#FFF;
+  border-radius:0;
+  padding:60px 10px;
+  margin:30px 0px;
+}
+.text, h4{
+  margin:20px 0px;
+  color: rgb(255, 0, 47); 
+}
+
+.box-part {
+  background: rgb(255, 239, 204);
+  border-radius: 15px;
+  padding: 20px;
+  transition: all 0.3s ease-in-out;
+  box-shadow: 8px 8px 0 rgba(255, 38, 78, 0.8);  /* Sombra sólida e diagonal, apenas para baixo e direita */
+}
+
+.box-part:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 12px 12px 0 rgba(255, 0, 47, 0.8);  /* Sombra mais intensa no hover */
+}
+
+
+.box-part i {
+  transition: transform 0.3s ease-in-out;
+}
+
+.box-part:hover i {
+  transform: rotate(10deg) scale(1.2);
+}
+
+.box-part i {
+  font-size: 5rem; /* Aumenta o tamanho do ícone */
+  color: rgba(255, 38, 78); /* Cor fofa */
+  border-radius: 50%; /* Deixa redondo */
+  padding: 20px; /* Espaçamento interno */
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.cardsbtn{
+  background-color: rgba(255, 17, 60, 0.8); 
+  color: #FFF;
+}
+
+.cardsbtn:hover{
+  background-color: rgba(255, 0, 47, 0.678); 
+  color: #FFF;
+}
+
+/* Cor de fundo do modal */
+.modal-content {
+  background-color: rgb(255, 90, 120); /* Cor de fundo do modal */
+  border: none; /* Sem borda */
+  color: #FFF; /* Cor do texto */
+  border-radius: 15px; /* Bordas arredondadas */
+  box-shadow: 8px 8px 0 rgb(180, 0, 33);  /* Sombra sólida e diagonal apenas para baixo e direita */
+}
+
+
+
+
+
+
+

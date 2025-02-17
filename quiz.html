@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Animado</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background: rgb(185, 29, 55);
+            margin: 0;
+        }
+        .quiz-container {
+            background: rgb(250, 193, 202);
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            width: 90%;
+            max-width: 400px;
+            text-align: center;
+            animation: fadeIn 1s;
+        }
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(-20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .option {
+            display: block;
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: none;
+            background: #ff758c;
+            color: white;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .option:hover {
+            background: #ff5a7f;
+        }
+        .correct {
+            background: #4CAF50 !important;
+        }
+        .wrong {
+            background: #f44336 !important;
+        }
+        .cover {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+        }
+        .hidden {
+            display: none;
+        }
+
+        .start-button, #next-button, .return-button {
+            background: #ff758c;
+            color: white;
+            padding: 10px 15px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .start-button:hover, #next-button:hover, .return-button:hover {
+            background: #ff5a7f;
+        }
+    </style>
+</head>
+<body>
+    <div class="quiz-container" id="cover">
+        <h2>Bem-vindo ao Quiz!</h2>
+        <p>Responda 5 perguntas e veja seu desempenho.</p>
+        <button class="start-button" onclick="startQuiz()">Começar</button>
+    </div>
+    
+    <div class="quiz-container hidden" id="quiz">
+        <h2 id="question">Carregando...</h2>
+        <div id="options"></div>
+        <button id="next-button" class="hidden" onclick="nextQuestion()">Próxima</button>
+    </div>
+    
+    <script>
+        const quizData = [
+            {
+                question: "Qual é a capital da França?",
+                options: ["Londres", "Madri", "Paris", "Berlim", "Roma"],
+                answer: "Paris"
+            },
+            {
+                question: "Quem escreveu 'Dom Quixote'?",
+                options: ["Shakespeare", "Machado de Assis", "Miguel de Cervantes", "Goethe", "Victor Hugo"],
+                answer: "Miguel de Cervantes"
+            },
+            {
+                question: "Qual é o maior planeta do sistema solar?",
+                options: ["Terra", "Marte", "Vênus", "Júpiter", "Saturno"],
+                answer: "Júpiter"
+            },
+            {
+                question: "Quem pintou a Mona Lisa?",
+                options: ["Van Gogh", "Picasso", "Da Vinci", "Michelangelo", "Rembrandt"],
+                answer: "Da Vinci"
+            },
+            {
+                question: "Qual é o elemento químico representado pelo símbolo 'O'?",
+                options: ["Ouro", "Oxigênio", "Prata", "Osmi"],
+                answer: "Oxigênio"
+            }
+        ];
+
+        let currentQuestion = 0;
+        
+        function startQuiz() {
+            document.getElementById("cover").classList.add("hidden");
+            document.getElementById("quiz").classList.remove("hidden");
+            loadQuestion();
+        }
+        
+        function loadQuestion() {
+            const questionElement = document.getElementById("question");
+            const optionsElement = document.getElementById("options");
+            const nextButton = document.getElementById("next-button");
+            
+            questionElement.textContent = quizData[currentQuestion].question;
+            optionsElement.innerHTML = "";
+            nextButton.classList.add("hidden");
+            
+            quizData[currentQuestion].options.forEach(option => {
+                const button = document.createElement("button");
+                button.textContent = option;
+                button.classList.add("option");
+                button.onclick = () => checkAnswer(button, option);
+                optionsElement.appendChild(button);
+            });
+        }
+        
+        function checkAnswer(button, selectedOption) {
+            const correctAnswer = quizData[currentQuestion].answer;
+            document.querySelectorAll(".option").forEach(btn => btn.disabled = true);
+            
+            if (selectedOption === correctAnswer) {
+                button.classList.add("correct");
+            } else {
+                button.classList.add("wrong");
+                document.querySelectorAll(".option").forEach(btn => {
+                    if (btn.textContent === correctAnswer) {
+                        btn.classList.add("correct");
+                    }
+                });
+            }
+            document.getElementById("next-button").classList.remove("hidden");
+        }
+        
+        function nextQuestion() {
+            currentQuestion++;
+            if (currentQuestion < quizData.length) {
+                loadQuestion();
+            } else {
+                document.getElementById("quiz").innerHTML = "<h2>Quiz finalizado!</h2><a href='index.html'><button class='return-button' >Voltar ao início</button></a>";
+            }
+        }
+    </script>
+</body>
+</html>
